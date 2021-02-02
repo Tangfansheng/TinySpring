@@ -4,6 +4,9 @@ import smallSpring.ioc.factory.ConfigurableListableBeanFactory;
 import smallSpring.ioc.factory.DefaultListableBeanFactory;
 
 public abstract  class AbstractRefreshableApplicationContext extends  AbstractApplicationContext{
+    private String configLocations;
+    private DefaultListableBeanFactory beanFactory;
+
     public String getConfigLocations() {
         return configLocations;
     }
@@ -12,8 +15,7 @@ public abstract  class AbstractRefreshableApplicationContext extends  AbstractAp
         this.configLocations = configLocations;
     }
 
-    private String configLocations;
-    private DefaultListableBeanFactory beanFactory;
+
     @Override
     protected void refreshBeanFactory() {
         DefaultListableBeanFactory beanFactory = createBeanFactory();

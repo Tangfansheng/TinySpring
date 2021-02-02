@@ -45,14 +45,15 @@ public class DefaultBeanDefinitionDocumentReader implements  BeanDefinitionDocum
 
     private void processBeanDefinition(Element ele, BeanDefinitionParserDelegate delegate) {
         BeanDefinitionHolder bdHolder= delegate.parseBeanDefinitionElement(ele);
+        //注册BeanDefinition
         registerBeanDefinition(bdHolder,beanDefinitionReader.getRegistry());
     }
 
     private void registerBeanDefinition(BeanDefinitionHolder bdHolder, BeanDefinitionRegistry registry) {
         String beanName = bdHolder.getBeanName();
-        registry.registerBeanDefinition(beanName,bdHolder.getBeanDefinition());
+        registry.registerBeanDefinition(beanName, bdHolder.getBeanDefinition());
 //        注册BeanDefinition和名称的映射关系
-        Class c=bdHolder.getBeanDefinition().getBeanClass();
+        Class c = bdHolder.getBeanDefinition().getBeanClass();
 //        注册名称和类别的映射关系map
         registry.setBeanDefintionByType(beanName,c);
 

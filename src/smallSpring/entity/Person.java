@@ -1,7 +1,4 @@
-package smallSpring.test;
-
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
+package smallSpring.entity;
 
 public class Person {
 

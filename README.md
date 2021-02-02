@@ -15,23 +15,23 @@ SmallSpring是通过对Spring源码学习后，对IOC和AOP功能模块的构建
 
         <!--     IOC   -->
         
-    <bean id="1" class="smallSpring.test.Person">
+    <bean id="1" class="smallSpring.entity.Person">
         <property name="age" value="24">
         </property>
     </bean>
     
-    <bean id="2" class="smallSpring.test.Student">
+    <bean id="2" class="smallSpring.entity.Student">
         <property name="teacher" ref="3"></property>
     </bean>
     
-    <bean id="3" class="smallSpring.test.Teacher">
+    <bean id="3" class="smallSpring.entity.Teacher">
         <property name="student" ref="2"></property>
     </bean>
     
-    <bean id="4" class="smallSpring.test.father" autowire="byType">
+    <bean id="4" class="smallSpring.entity.father" autowire="byType">
     </bean>
     
-    <bean id="5" class="smallSpring.test.father " scope="prototype">
+    <bean id="5" class="smallSpring.entity.father " scope="prototype">
     </bean>
 
     
@@ -54,7 +54,7 @@ SmallSpring是通过对Spring源码学习后，对IOC和AOP功能模块的构建
 
     <beans>
                <!--    AOP  -->
-    <bean id="boss" class="smallSpring.test.Boss"></bean>
+    <bean id="boss" class="smallSpring.entity.Boss"></bean>
     
     <bean id="advice" class="smallSpring.aop.advice.Impl.MethodBeforeAdviceImpl"></bean>
     
@@ -64,7 +64,7 @@ SmallSpring是通过对Spring源码学习后，对IOC和AOP功能模块的构建
     
     <bean id="proxyCreator" class="smallSpring.aop.autoproxycreator.AdvisorAutoProxyCreator">
         <property name="interceptorName" value="advisor"></property>
-        <property name="proxyCls" value="smallSpring.test.Boss"></property>
+        <property name="proxyCls" value="smallSpring.entity.Boss"></property>
     </bean>
     
     </beans>

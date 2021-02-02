@@ -1,4 +1,4 @@
-package smallSpring.test;
+package smallSpring.entity;
 
 public class Boss {
     public void  say()

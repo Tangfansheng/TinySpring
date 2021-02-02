@@ -5,26 +5,24 @@ import smallSpring.ioc.exception.BeansException;
 import smallSpring.ioc.factory.ConfigurableListableBeanFactory;
 import smallSpring.ioc.resourceloader.DefaultResourceLoader;
 
-public abstract class AbstractApplicationContext   extends DefaultResourceLoader implements  ConfigurableApplicationContext{
+public abstract class AbstractApplicationContext extends DefaultResourceLoader implements ConfigurableApplicationContext {
 
 
     @Override
     public void refresh() throws BeansException {
 //        增添BeanFactory
-        ConfigurableListableBeanFactory beanFactory=obtainFreshBeanFactory();
+        ConfigurableListableBeanFactory beanFactory = obtainFreshBeanFactory();
 //         注册beanProcesssors
         registerBeanPostProcessors(beanFactory);
 //        结束Factory的构建
         finishBeanFactoryInitialization(beanFactory);
     }
 
-    protected  void registerBeanPostProcessors(ConfigurableListableBeanFactory beanFactory)
-    {
-        PostProcessorRegistrationDelegate.registerBeanPostProcessors(beanFactory,this);
+    protected void registerBeanPostProcessors(ConfigurableListableBeanFactory beanFactory) {
+        PostProcessorRegistrationDelegate.registerBeanPostProcessors(beanFactory, this);
     }
 
-    protected  void finishBeanFactoryInitialization(ConfigurableListableBeanFactory beanFactory)
-    {
+    protected void finishBeanFactoryInitialization(ConfigurableListableBeanFactory beanFactory) {
         beanFactory.preInstantiateSingletons();
     }
 
@@ -33,17 +31,18 @@ public abstract class AbstractApplicationContext   extends DefaultResourceLoader
 //
 //    }
 
-    protected  ConfigurableListableBeanFactory obtainFreshBeanFactory()
-    {
+    protected ConfigurableListableBeanFactory obtainFreshBeanFactory() {
         refreshBeanFactory();
-        ConfigurableListableBeanFactory beanFactory=getBeanFactory();
+        ConfigurableListableBeanFactory beanFactory = getBeanFactory();
         return beanFactory;
     }
 
     protected abstract void refreshBeanFactory();
-    public Object getBean(String name)  {
+
+    public Object getBean(String name) {
         return getBeanFactory().getBean(name);
     }
+
     @Override
-    public abstract ConfigurableListableBeanFactory getBeanFactory() ;
+    public abstract ConfigurableListableBeanFactory getBeanFactory();
 }

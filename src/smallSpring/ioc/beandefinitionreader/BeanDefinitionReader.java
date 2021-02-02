@@ -6,7 +6,10 @@ import smallSpring.ioc.resourceloader.ResourceLoader;
 
 public interface BeanDefinitionReader {
     int loadBeanDefinitions(Resource resource);
+
     int loadBeanDefinitions(String location);
+
     BeanDefinitionRegistry getRegistry();
+
     ResourceLoader getResourceLoader();
 }
